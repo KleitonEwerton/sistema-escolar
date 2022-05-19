@@ -8,9 +8,10 @@ package com.kleitonewerton.sistema;
  *
  * @author KleitonEwerton
  */
-public interface Disciplina {
+public interface Diciplina {
     
-    double getNotaFinal();
-    int getFaltas();
+    
+    int getCargaHoraria();
+    String getCodigo();
     
 }

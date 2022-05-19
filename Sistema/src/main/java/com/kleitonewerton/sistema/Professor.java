@@ -14,9 +14,9 @@ import java.util.List;
 public class Professor extends Usuario{
     
     private final List<Aluno> listaAlunos = new ArrayList<>();
-
+    private final List<Materia> listaDisciplinas = new ArrayList<>();
     
-    public Professor(String nome, int numeroDeRegistro) {
+    public Professor(String nome, String numeroDeRegistro) {
         
         super(nome, numeroDeRegistro);
         
@@ -25,7 +25,18 @@ public class Professor extends Usuario{
     public List<Aluno> getListaAlunos() {
         return listaAlunos;
     }
-    
-    
+    public String getDiciplinas(){
+        
+        String diciplinas = "";
+        for(Materia dic: this.listaDisciplinas){
+            diciplinas += dic.getCodigo()+ ",";
+        }
+        return diciplinas;
+    }  
+    public void addNovaDiciplina(String codigo, int cargahoraria){
+        
+        this.listaDisciplinas.add(new Materia(cargahoraria, codigo));
+        
+    }
     
 }

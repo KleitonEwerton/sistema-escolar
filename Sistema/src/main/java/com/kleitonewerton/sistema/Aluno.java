@@ -15,13 +15,26 @@ public class Aluno extends Usuario{
 
    
     
-    private final List<Disciplina> listaDisciplinas = new ArrayList<>();
+    private final List<Diciplina> listaDiciplinas = new ArrayList<>();
 
     
-    public Aluno(String nome, int numeroDeRegistro) {
+    public Aluno(String nome, String numeroDeRegistro) {
         super(nome, numeroDeRegistro);
     }
     
+    public String getDiciplinas(){
+        
+        String diciplinas = "";
+        for(Diciplina dic: this.listaDiciplinas){
+            diciplinas += dic.getCodigo() + ",";
+        }
+        return diciplinas;
+    }   
   
+    public void addNovaDiciplina(String codigo, int cargahoraria){
+        
+        listaDiciplinas.add(new Materia(cargahoraria, codigo));
+        
+    }
     
 }

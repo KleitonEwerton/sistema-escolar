@@ -4,37 +4,30 @@
  */
 package com.kleitonewerton.sistema;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author KleitonEwerton
  */
-public class Materia implements Disciplina{
+public class Materia implements Diciplina{
      
-    private final List<Integer> listaNotas = new ArrayList<>();
-    private int faltas = 0;
+    private int cargaHoraria;
+    private String codigo;
+
+    public Materia(int cargaHoraria, String codigo) {
+        this.cargaHoraria = cargaHoraria;
+        this.codigo = codigo;
+    }
+    
     
     @Override
-    public double getNotaFinal() {
-        
-        double notaFinal = 0;
-        for(Integer nota : this.listaNotas)
-{
-            notaFinal += nota;
-}
-        
-        return  notaFinal ;
+    public int getCargaHoraria() {
+        return this.cargaHoraria;
     }
 
     @Override
-    public int getFaltas() {
-        return this.faltas;
-    }
-    
-    public void novaFalta(){
-        this.faltas += 1;
+    public String getCodigo() {
+        return this.codigo;
     }
     
 }

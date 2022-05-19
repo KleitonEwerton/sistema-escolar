@@ -5,6 +5,7 @@
 package com.kleitonewerton.sistema;
 
 import static com.kleitonewerton.sistema.Utils.bemVindo;
+import com.kleitonewerton.sistema.views.Tela;
 
 /**
  *
@@ -15,6 +16,8 @@ public class Sistema {
     public static void main(String [] args){
         
        bemVindo();
+       Tela screen = new Tela();
+       screen.draw();
         
     }
     

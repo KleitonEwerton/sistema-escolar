@@ -11,11 +11,11 @@ package com.kleitonewerton.sistema;
 abstract class Usuario {
     
     private String nome;
-    private int numeroDeRegistro;
+    private String matricula;
 
-    public Usuario(String nome, int numeroDeRegistro) {
+    public Usuario(String nome,  String matricula) {
         this.nome = nome;
-        this.numeroDeRegistro = numeroDeRegistro;
+        this.matricula = matricula;
     }
 
     public String getNome() {
@@ -26,12 +26,12 @@ abstract class Usuario {
         this.nome = nome;
     }
 
-    public int getNumeroDeRegistro() {
-        return numeroDeRegistro;
+    public String getMatricula() {
+        return this.matricula;
     }
 
-    public void setNumeroDeRegistro(int numeroDeRegistro) {
-        this.numeroDeRegistro = numeroDeRegistro;
+    public void setMatricula(String numeroDeRegistro) {
+        this.matricula = numeroDeRegistro;
     }
     
     
