@@ -14,8 +14,10 @@ import com.kleitonewerton.sistema.controladores.AdicionarNovoAluno;
 import com.kleitonewerton.sistema.controladores.AdicionarNovoProfessor;
 import com.kleitonewerton.sistema.controladores.AlterarValorAlunos;
 import com.kleitonewerton.sistema.controladores.AlterarValorProfessores;
+import com.kleitonewerton.sistema.controladores.DesvincularDiciplinaProfessor;
 import com.kleitonewerton.sistema.controladores.RemoverAluno;
 import com.kleitonewerton.sistema.controladores.RemoverProfessor;
+import com.kleitonewerton.sistema.controladores.VincularDiciplinaProfessor;
 import com.kleitonewerton.sistema.tabelas.TableAlunos;
 import com.kleitonewerton.sistema.tabelas.TableProfessores;
 import java.awt.BorderLayout;
@@ -56,7 +58,9 @@ public class Tela extends JFrame{
     private JTextField diciplinasInputAluno;
     private JTextField nomeInputProfessor;
     private JTextField matriculaInputProfessor;
-    private JTextField diciplinasInputProfessor;
+    private JTextField diciplinaNameInputProfessor;
+    private JTextField diciplinaCodeInputProfessor;
+    private JTextField diciplinaCHInputProfessor;
     
  
     public Tela(){
@@ -93,7 +97,7 @@ public class Tela extends JFrame{
         this.add(menuBar);
         
         Aluno aluno = new Aluno ("eee","ooo");
-        aluno.addNovaDiciplina("erere", 32);
+        
         this.modelAlunos.addNovoAluno(aluno);
         
         this.setVisible(true);
@@ -156,11 +160,11 @@ public class Tela extends JFrame{
         
         painel1.setLayout(new GridLayout(4,2,20,10));
         
-        JLabel nome = new JLabel("NOME: ");
-        JLabel valor = new JLabel("MATRÍCULA ");
-        JLabel descricao = new JLabel("DICIPLINAS COM AULAS: ");
-        JButton btnAdicionar = new JButton("ADICIONAR ALUNO");
-        JButton btnRemover = new JButton("REMOVER PROFESSOR");
+        JLabel nome = new JLabel("Nome: ");
+        JLabel valor = new JLabel("Matricula: ");
+        JLabel descricao = new JLabel("Diciplinas com aulas: ");
+        JButton btnAdicionar = new JButton("Adicionar aluno");
+        JButton btnRemover = new JButton("Remover aluno");
         
         this.matriculaInputAluno = new JTextField(50);
         this.nomeInputAluno = new JTextField(50);
@@ -182,45 +186,68 @@ public class Tela extends JFrame{
         painel2.add(btnAdicionar);
         painel2.add(btnRemover);
         
+        
         this.segundoPainelAlunos.add(painel1);
         this.segundoPainelAlunos.add(painel2);
     }
     
     private void drawSegundoPainelProfessores(){
         this.segundoPainelProfessores = new JPanel();
-        this.segundoPainelProfessores.setBorder(BorderFactory.createTitledBorder("Professores"));
+        
         this.segundoPainelProfessores.setLayout(new GridLayout(2,0,20, 0));
         
         JPanel painel1 = new JPanel();
         JPanel painel2 = new JPanel();
         
-        painel1.setLayout(new GridLayout(5,2,20,30));
+        painel1.setBorder(BorderFactory.createTitledBorder("PROFESSORES"));
+        painel1.setLayout(new GridLayout(5,2,60,30));
+        painel2.setBorder(BorderFactory.createTitledBorder("DICIPLINAS"));
+        painel2.setLayout(new GridLayout(5,2,60,30));
         
-        JLabel nome = new JLabel("NOME: ");
-        JLabel valor = new JLabel("MATRÍCULA ");
-        JLabel descricao = new JLabel("DICIPLINAS COM AULAS: ");
-        JButton btnAdicionar = new JButton("ADICIONAR PROFESSOR");
-        JButton btnRemover = new JButton("REMOVER ALUNO");
+        JLabel nome = new JLabel("Nome: ");
+        JLabel valor = new JLabel("Matrícula ");
+        JButton btnAdicionar = new JButton("Adicionar professor");
+        JButton btnRemover = new JButton("Remover professor");
         
         this.matriculaInputProfessor = new JTextField(50);
         this.nomeInputProfessor = new JTextField(50);
-        this.diciplinasInputProfessor = new JTextField(50);
         btnAdicionar.addActionListener(new AdicionarNovoProfessor(this));
         btnRemover.addActionListener(new RemoverProfessor(this));
-        
         
         painel1.add(nome);
         painel1.add(nomeInputProfessor);
         
+        JLabel descricao = new JLabel("Nome da diciplina: ");
+        JLabel descricao2 = new JLabel("Código: ");
+        JLabel descricao3 = new JLabel("Carga Horária: ");
+        
+        this.diciplinaNameInputProfessor = new JTextField(50);
+        this.diciplinaCodeInputProfessor = new JTextField(50);
+        this.diciplinaCHInputProfessor = new JTextField(50);
+       
         painel1.add(valor);
         painel1.add(matriculaInputProfessor );
-       
-         
-        painel1.add(descricao);
-        painel1.add(diciplinasInputProfessor);
+
+        painel1.add(btnAdicionar);
+        painel1.add(btnRemover);
         
-        painel2.add(btnAdicionar);
-        painel2.add(btnRemover);
+        painel2.add(descricao);
+        painel2.add(this.diciplinaNameInputProfessor);
+        
+        painel2.add(descricao2);
+        painel2.add(this.diciplinaCodeInputProfessor);
+        
+        painel2.add(descricao3);
+        painel2.add(this.diciplinaCHInputProfessor);
+        
+        JButton btnAddDiciplina = new JButton("Vincular diciplina");
+        JButton btnRemoveDiciplina = new JButton("Remove diciplina");
+        
+        
+        btnAddDiciplina.addActionListener(new VincularDiciplinaProfessor(this));
+        btnRemoveDiciplina.addActionListener(new DesvincularDiciplinaProfessor(this));
+        painel2.add(btnAddDiciplina);
+        painel2.add(btnRemoveDiciplina);
         
         this.segundoPainelProfessores.add(painel1);
         this.segundoPainelProfessores.add(painel2);
@@ -242,7 +269,6 @@ public class Tela extends JFrame{
         return this.tableAlunos;
     }
     
-    
     public JTextField getNomeInputAluno() {
         return this.nomeInputAluno;
     }
@@ -259,8 +285,14 @@ public class Tela extends JFrame{
         return this.nomeInputProfessor;
     }
 
-     public JTextField getDiciplinasInputProfessor() {
-        return this.diciplinasInputProfessor;
+     public JTextField getDiciplinaCHInputProfessor() {
+        return this.diciplinaCHInputProfessor;
+    }
+    public JTextField getDiciplinaCodeInputProfessor() {
+        return this.diciplinaCodeInputProfessor;
+    }
+    public JTextField getDiciplinaNameInputProfessor() {
+        return this.diciplinaNameInputProfessor;
     }
 
      public JTextField getMatriculaInputProfessor() {

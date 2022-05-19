@@ -6,21 +6,24 @@ package com.kleitonewerton.sistema.controladores;
 
 import com.kleitonewerton.sistema.Professor;
 import com.kleitonewerton.sistema.views.Tela;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
- 
-public class AlterarValorProfessores implements ListSelectionListener{
+/**
+ *
+ * @author KleitonEwerton
+ */
+public class DesvincularDiciplinaProfessor implements ActionListener{
 
-    private Tela tela;
+    private final Tela tela;
 
-    public AlterarValorProfessores(Tela tela) {
+    public DesvincularDiciplinaProfessor(Tela tela) {
         this.tela = tela;
     }
     
     
     @Override
-    public void valueChanged(ListSelectionEvent e) {
+    public void actionPerformed(ActionEvent e) {
         
         int indexLinha = this.tela.getTableProfessores().getSelectedRow();
         
@@ -28,10 +31,12 @@ public class AlterarValorProfessores implements ListSelectionListener{
         
         try{
             
-                Professor professor = this.tela.getModelProfessores().getProfessor(indexLinha);
-                tela.getNomeInputProfessor().setText(professor.getNome());
                 
-                tela.getMatriculaInputProfessor().setText(professor.getMatricula());
+               Professor professor = this.tela.getModelProfessores().getProfessor(indexLinha);
+               System.out.println(tela.getDiciplinaCodeInputProfessor().getText());
+               professor.removeDiciplina(tela.getDiciplinaCodeInputProfessor().getText());
+                
+               tela.getModelProfessores().atualizarTabela();
             
             
         }catch(Exception ex){
@@ -41,6 +46,5 @@ public class AlterarValorProfessores implements ListSelectionListener{
         }
         
     }
-
     
 }

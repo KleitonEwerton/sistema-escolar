@@ -72,4 +72,8 @@ public class TableAlunos extends AbstractTableModel{
     public Aluno getAluno(int indexProduto){
         return this.listAulos.get(indexProduto);
     }
+    public void atualizarTabela(){
+         this.fireTableDataChanged();      
+        
+    }
 }

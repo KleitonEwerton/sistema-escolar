@@ -73,4 +73,9 @@ public class TableProfessores extends AbstractTableModel{
     public Professor getProfessor(int indexProduto){
         return this.listProfessores.get(indexProduto);
     }
+    public void atualizarTabela(){
+        
+        this.fireTableDataChanged();      
+        
+    }
 }

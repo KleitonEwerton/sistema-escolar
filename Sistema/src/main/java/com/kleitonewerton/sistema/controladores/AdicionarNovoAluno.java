@@ -47,8 +47,7 @@ public class AdicionarNovoAluno implements ActionListener{
         }
         Aluno aluno = new Aluno(nome, matricula);
         
-        for(int i  =0; i<disciplinas.length;i++)
-            aluno.addNovaDiciplina(disciplinas[i], 60);
+        
         
         this.tela.getModelAlunos().addNovoAluno(aluno);
         

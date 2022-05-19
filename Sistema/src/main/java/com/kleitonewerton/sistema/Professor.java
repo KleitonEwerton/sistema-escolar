@@ -33,9 +33,16 @@ public class Professor extends Usuario{
         }
         return diciplinas;
     }  
-    public void addNovaDiciplina(String codigo, int cargahoraria){
+    public void addNovaDiciplina(String name, String codigo, int cargahoraria){
         
-        this.listaDisciplinas.add(new Materia(cargahoraria, codigo));
+        this.listaDisciplinas.add(new Materia(name, codigo, cargahoraria));
+        
+    }
+    public void removeDiciplina(String code){
+        
+        for(int i =0;i<listaDisciplinas.size();i++)
+            if(listaDisciplinas.get(i).getCodigo().equals(code))
+                listaDisciplinas.remove(i);
         
     }
     

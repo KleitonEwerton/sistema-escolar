@@ -4,7 +4,8 @@
  */
 package com.kleitonewerton.sistema.controladores;
 
-import com.kleitonewerton.sistema.Aluno;
+
+import com.kleitonewerton.sistema.Materia;
 import com.kleitonewerton.sistema.Professor;
 import com.kleitonewerton.sistema.views.Tela;
 import java.awt.event.ActionEvent;
@@ -30,9 +31,7 @@ public class AdicionarNovoProfessor implements ActionListener{
         
         String nome = tela.getNomeInputProfessor().getText();
         String matricula = tela.getMatriculaInputProfessor().getText(); 
-        String diciplina = tela.getDiciplinasInputProfessor().getText();
-        diciplina = diciplina.replace(" ", "");
-        String[] disciplinas = diciplina.split(",");
+       
         
         double valor;
         int quantidade;
@@ -46,12 +45,12 @@ public class AdicionarNovoProfessor implements ActionListener{
             return;
         }
         
-        Professor professor = new Professor(nome, matricula);
+       
         
-        for(int i  =0; i<disciplinas.length;i++)
-            professor.addNovaDiciplina(disciplinas[i], 60);
         
-        this.tela.getModelProfessores().addNovoProfessor(professor);
+        
+        
+        this.tela.getModelProfessores().addNovoProfessor(new Professor(nome, matricula));
         
     }
     

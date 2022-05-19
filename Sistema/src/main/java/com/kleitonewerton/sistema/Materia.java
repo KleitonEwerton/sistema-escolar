@@ -11,14 +11,15 @@ package com.kleitonewerton.sistema;
  */
 public class Materia implements Diciplina{
      
-    private int cargaHoraria;
-    private String codigo;
+    private final int cargaHoraria;
+    private final String codigo;
+    private final String name;
 
-    public Materia(int cargaHoraria, String codigo) {
+    public Materia(String name, String codigo, int cargaHoraria) {
         this.cargaHoraria = cargaHoraria;
         this.codigo = codigo;
+        this.name = name;
     }
-    
     
     @Override
     public int getCargaHoraria() {
@@ -28,6 +29,11 @@ public class Materia implements Diciplina{
     @Override
     public String getCodigo() {
         return this.codigo;
+    }
+
+    @Override
+    public String getName() {
+       return this.name;
     }
     
 }
