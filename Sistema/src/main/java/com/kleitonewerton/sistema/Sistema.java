@@ -12,13 +12,13 @@ import com.kleitonewerton.sistema.views.Tela;
  * @author KleitonEwerton
  */
 public class Sistema {
-    
-    public static void main(String [] args){
-        
-       bemVindo();
-       Tela screen = new Tela();
-       screen.draw();
-        
+
+    public static void main(String[] args) {
+
+        bemVindo();
+        Tela screen = new Tela();
+        screen.draw();
+
     }
-    
+
 }

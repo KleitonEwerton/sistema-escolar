@@ -4,7 +4,6 @@
  */
 package com.kleitonewerton.sistema.controladores;
 
-
 import com.kleitonewerton.sistema.Materia;
 import com.kleitonewerton.sistema.Professor;
 import com.kleitonewerton.sistema.views.Tela;
@@ -16,43 +15,40 @@ import javax.swing.JOptionPane;
  *
  * @author KleitonEwerton
  */
-
-public class AdicionarNovoProfessor implements ActionListener{
+public class AdicionarNovoProfessor implements ActionListener {
 
     private final Tela tela;
 
     public AdicionarNovoProfessor(Tela tela) {
         this.tela = tela;
     }
-    
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+
         String nome = tela.getNomeInputProfessor().getText();
-        String matricula = tela.getMatriculaInputProfessor().getText(); 
-       
-        
+        String matricula = tela.getMatriculaInputProfessor().getText();
+
         double valor;
         int quantidade;
-       
-        if(nome.equals("" )){
-            JOptionPane.showMessageDialog(null, "ERRO AO ADICIONAR\nNOME OBRIGATÓRIO", "ERRO",JOptionPane.ERROR_MESSAGE);
+
+        if (nome.equals("")) {
+            JOptionPane.showMessageDialog(null, "ERRO AO ADICIONAR\nNOME OBRIGATÓRIO", "ERRO", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        if(matricula.equals("" )){
-            JOptionPane.showMessageDialog(null, "ERRO AO ADICIONAR\nMATRÍCULA OBRIGATÓRIO", "ERRO",JOptionPane.ERROR_MESSAGE);
+        if (matricula.equals("")) {
+            JOptionPane.showMessageDialog(null, "ERRO AO ADICIONAR\nMATRÍCULA OBRIGATÓRIO", "ERRO", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
-       
-        
-        
-        
-        
+
+        if (tela.containsCode(matricula)) {
+            JOptionPane.showMessageDialog(null, "ERRO AO ADICIONAR\nCODIGO JÁ USADO", "ERRO", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         this.tela.getModelProfessores().addObj(new Professor(nome, matricula));
         tela.cleanFilds();
-        
+
     }
-    
+
 }

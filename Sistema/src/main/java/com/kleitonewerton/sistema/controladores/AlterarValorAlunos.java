@@ -13,38 +13,36 @@ import javax.swing.event.ListSelectionListener;
  *
  * @author KleitonEwerton
  */
-
-public class AlterarValorAlunos  implements ListSelectionListener{
+public class AlterarValorAlunos implements ListSelectionListener {
 
     private Tela tela;
 
     public AlterarValorAlunos(Tela tela) {
         this.tela = tela;
     }
-    
-    
+
     @Override
     public void valueChanged(ListSelectionEvent e) {
-        
+
         int indexLinha = this.tela.getTableAlunos().getSelectedRow();
-        
-        if( indexLinha < 0)return;
-        
-        try{
-            
-                Aluno aluno = this.tela.getModelAlunos().getAluno(indexLinha);
-                tela.getNomeInputAluno().setText(aluno.getNome());
-                tela.getMatriculaInputAluno().setText(aluno.getMatricula());
-                tela.getDiciplinasInputAluno().setText(aluno.getDiciplinas());
-                
-            
-        }catch(Exception ex){
-            
-            System.out.println("ERRO");
-            
+
+        if (indexLinha < 0) {
+            return;
         }
-        
+
+        try {
+
+            Aluno aluno = this.tela.getModelAlunos().getAluno(indexLinha);
+            tela.getNomeInputAluno().setText(aluno.getNome());
+            tela.getMatriculaInputAluno().setText(aluno.getMatricula());
+            tela.getDiciplinasInputAluno().setText(aluno.getDiciplinas());
+
+        } catch (Exception ex) {
+
+            System.out.println("ERRO");
+
+        }
+
     }
 
-    
 }

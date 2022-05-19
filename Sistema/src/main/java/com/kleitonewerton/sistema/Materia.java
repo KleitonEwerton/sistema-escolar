@@ -4,13 +4,12 @@
  */
 package com.kleitonewerton.sistema;
 
-
 /**
  *
  * @author KleitonEwerton
  */
-public class Materia implements Diciplina{
-     
+public class Materia implements Diciplina {
+
     private final int cargaHoraria;
     private final String codigo;
     private final String name;
@@ -23,7 +22,7 @@ public class Materia implements Diciplina{
         this.name = name;
         this.responsavel = responsavel;
     }
-    
+
     @Override
     public int getCargaHoraria() {
         return this.cargaHoraria;
@@ -36,25 +35,27 @@ public class Materia implements Diciplina{
 
     @Override
     public String getName() {
-       return this.name;
+        return this.name;
     }
+
     @Override
-    public String getResponsavel(){
+    public String getResponsavel() {
         return responsavel;
     }
-    
+
     @Override
     public int getQntAlunos() {
         return qntAlunos;
     }
-    
+
     @Override
-    public void menosUmAluno(){
+    public void menosUmAluno() {
         this.qntAlunos -= 1;
     }
+
     @Override
-    public void maisUmAluno(){
+    public void maisUmAluno() {
         this.qntAlunos += 1;
     }
-    
+
 }

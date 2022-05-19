@@ -8,13 +8,19 @@ package com.kleitonewerton.sistema;
  *
  * @author KleitonEwerton
  */
-public interface Diciplina { 
-    
+public interface Diciplina {
+
     int getCargaHoraria();
+
     String getCodigo();
+
     String getName();
+
     String getResponsavel();
+
     int getQntAlunos();
+
     void menosUmAluno();
+
     void maisUmAluno();
 }

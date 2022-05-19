@@ -84,4 +84,15 @@ public class TableProfessores extends AbstractTableModel implements Tables {
     public Professor getProfessor(int indexProduto) {
         return this.listProfessores.get(indexProduto);
     }
+
+    @Override
+    public boolean contains(String value) {
+        for (Professor porf : listProfessores) {
+            if (porf.getMatricula().equals(value)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

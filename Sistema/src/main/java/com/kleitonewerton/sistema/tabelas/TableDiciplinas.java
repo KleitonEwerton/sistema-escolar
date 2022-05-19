@@ -9,29 +9,27 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
-
 /**
  *
  * @author KleitonEwerton
  */
-public class TableDiciplinas extends AbstractTableModel implements Tables{
-    
-    private final String[] colunas = new String[]{"CODIGO","NOME", "CARGA HORÁRIA", "RESPONSAVEL", "QUANTIDADE DE ALUNOS"};
-    private final List<Materia> listDiciplina = new ArrayList<>();    
-    
-   
-    public TableDiciplinas(){
-        
+public class TableDiciplinas extends AbstractTableModel implements Tables {
+
+    private final String[] colunas = new String[]{"CODIGO", "NOME", "CARGA HORÁRIA", "RESPONSAVEL", "QUANTIDADE DE ALUNOS"};
+    private final List<Materia> listDiciplina = new ArrayList<>();
+
+    public TableDiciplinas() {
+
     }
-    
+
     @Override
-    public String getColumnName(int indexColuna){
-        
+    public String getColumnName(int indexColuna) {
+
         return colunas[indexColuna];
-        
+
     }
-    
-    @Override 
+
+    @Override
     public int getRowCount() {
         return this.listDiciplina.size();
     }
@@ -43,65 +41,82 @@ public class TableDiciplinas extends AbstractTableModel implements Tables{
 
     @Override
     public Object getValueAt(int indexLinha, int indexColuna) {
-        
-        switch(indexColuna){
-            
+
+        switch (indexColuna) {
+
             case 0:
-                return this.listDiciplina.get(indexLinha).getCodigo();      
+                return this.listDiciplina.get(indexLinha).getCodigo();
             case 1:
-                return this.listDiciplina.get(indexLinha).getName();    
+                return this.listDiciplina.get(indexLinha).getName();
             case 2:
-                return this.listDiciplina.get(indexLinha).getCargaHoraria();    
+                return this.listDiciplina.get(indexLinha).getCargaHoraria();
             case 3:
-                return this.listDiciplina.get(indexLinha).getResponsavel();    
+                return this.listDiciplina.get(indexLinha).getResponsavel();
             case 4:
-                return this.listDiciplina.get(indexLinha).getQntAlunos();    
+                return this.listDiciplina.get(indexLinha).getQntAlunos();
         }
         return null;
-        
+
     }
-   
+
     @Override
-    public void removeObj(int indexLinha){
-        
-        this.listDiciplina.remove(indexLinha);                      
-        this.fireTableRowsDeleted(indexLinha,indexLinha);
-        
+    public void removeObj(int indexLinha) {
+
+        this.listDiciplina.remove(indexLinha);
+        this.fireTableRowsDeleted(indexLinha, indexLinha);
+
     }
-  
+
     @Override
-    public void atualizarTabela(){
-         this.fireTableDataChanged();      
-        
+    public void atualizarTabela() {
+        this.fireTableDataChanged();
+
     }
+
     @Override
-    public List getList(){
+    public List getList() {
         return this.listDiciplina;
     }
-    
-    public void addObj(Materia materia){
-        
-        this.listDiciplina.add(materia);     
-        this.fireTableDataChanged();          
+
+    public void addObj(Materia materia) {
+
+        this.listDiciplina.add(materia);
+        this.fireTableDataChanged();
     }
-    
-    public Materia getDiciplina(int indexProduto){
+
+    public Materia getDiciplina(int indexProduto) {
         return this.listDiciplina.get(indexProduto);
     }
-    public void removeDiciplina(String code){
+
+    public void removeDiciplina(String code) {
         
-        
-        for(int i =0;i<listDiciplina.size();i++)
-            if(listDiciplina.get(i).getCodigo().equals(code))
+        for (int i = 0; i < listDiciplina.size(); i++) {
+            if (listDiciplina.get(i).getCodigo().equals(code)) {
                 listDiciplina.remove(i);
-        
+                
+            }
+        }
+
     }
-    public Materia getDiciplinaByCode(String code){
-        
-        for(Materia mat: listDiciplina)
-            if(mat.getCodigo().equals(code)){
+
+    public Materia getDiciplinaByCode(String code) {
+
+        for (Materia mat : listDiciplina) {
+            if (mat.getCodigo().equals(code)) {
                 return mat;
             }
-       return null;
+        }
+        return null;
+    }
+
+    @Override
+    public boolean contains(String value) {
+        for (Materia mat : listDiciplina) {
+            if (mat.getCodigo().equals(value)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

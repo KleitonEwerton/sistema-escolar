@@ -9,11 +9,11 @@ package com.kleitonewerton.sistema;
  * @author KleitonEwerton
  */
 abstract class Usuario {
-    
+
     private String nome;
     private String matricula;
 
-    public Usuario(String nome,  String matricula) {
+    public Usuario(String nome, String matricula) {
         this.nome = nome;
         this.matricula = matricula;
     }
@@ -33,7 +33,5 @@ abstract class Usuario {
     public void setMatricula(String numeroDeRegistro) {
         this.matricula = numeroDeRegistro;
     }
-    
-    
-    
+
 }

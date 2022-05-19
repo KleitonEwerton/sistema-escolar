@@ -11,43 +11,48 @@ import java.util.List;
  *
  * @author KleitonEwerton
  */
-public class Professor extends Usuario{
-    
+public class Professor extends Usuario {
+
     private final List<Aluno> listaAlunos = new ArrayList<>();
     private final List<Materia> listaDisciplinas = new ArrayList<>();
-    
+
     public Professor(String nome, String numeroDeRegistro) {
-        
+
         super(nome, numeroDeRegistro);
-        
+
     }
 
     public List<Aluno> getListaAlunos() {
         return listaAlunos;
     }
-    public String getDiciplinas(){
-        
+
+    public String getDiciplinas() {
+
         String diciplinas = "";
-        for(Materia dic: this.listaDisciplinas){
-            diciplinas += dic.getCodigo()+ ",";
+        for (Materia dic : this.listaDisciplinas) {
+            diciplinas += dic.getCodigo() + ",";
         }
         return diciplinas;
-    }  
-    public void addNovaDiciplina(String name, String codigo, int cargahoraria){
-        
+    }
+
+    public void addNovaDiciplina(String name, String codigo, int cargahoraria) {
+
         this.listaDisciplinas.add(new Materia(name, codigo, cargahoraria, getNome()));
-        
+
     }
-    public void removeDiciplina(String code){
-        
-        for(int i =0;i<listaDisciplinas.size();i++)
-            if(listaDisciplinas.get(i).getCodigo().equals(code))
+
+    public void removeDiciplina(String code) {
+
+        for (int i = 0; i < listaDisciplinas.size(); i++) {
+            if (listaDisciplinas.get(i).getCodigo().equals(code)) {
                 listaDisciplinas.remove(i);
-        
+            }
+        }
+
     }
-    public List getListDiciplinas(){
+
+    public List getListDiciplinas() {
         return this.listaDisciplinas;
     }
-    
-    
+
 }

@@ -18,4 +18,6 @@ public interface Tables {
 
     List getList();
 
+    boolean contains(String value);
+
 }

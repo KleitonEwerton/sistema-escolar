@@ -11,43 +11,39 @@ import java.util.List;
  *
  * @author KleitonEwerton
  */
-public class Aluno extends Usuario{
+public class Aluno extends Usuario {
 
-   
-    
     private final List<String> listaDiciplinas = new ArrayList<>();
 
-    
     public Aluno(String nome, String numeroDeRegistro) {
         super(nome, numeroDeRegistro);
     }
-    
-    public String getDiciplinas(){
-        
+
+    public String getDiciplinas() {
+
         String diciplinas = "";
-        for(String dic: this.listaDiciplinas){
+        for (String dic : this.listaDiciplinas) {
             diciplinas += dic + ",";
         }
         return diciplinas;
-    }   
-  
-    public void addNovaDiciplina(String codigo){
-        
-        listaDiciplinas.add(codigo);
-        
     }
-    public List getListaDiciplinas(){
+
+    public void addNovaDiciplina(String codigo) {
+
+        listaDiciplinas.add(codigo);
+
+    }
+
+    public List getListaDiciplinas() {
         return this.listaDiciplinas;
     }
-    
-    public void removeDiciplinaByCode(String code){
-        
-     
+
+    public void removeDiciplinaByCode(String code) {
+
         while (listaDiciplinas.contains(code)) {
             listaDiciplinas.remove(code);
+        }
+
     }
-        
-      
-    }
-    
+
 }
