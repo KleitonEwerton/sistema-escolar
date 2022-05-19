@@ -35,8 +35,12 @@ public class DesvincularDiciplinaProfessor implements ActionListener{
                Professor professor = this.tela.getModelProfessores().getProfessor(indexLinha);
                System.out.println(tela.getDiciplinaCodeInputProfessor().getText());
                professor.removeDiciplina(tela.getDiciplinaCodeInputProfessor().getText());
-                
+               tela.getModelDiciplinas().removeDiciplina(tela.getDiciplinaCodeInputProfessor().getText());
+               tela.getModelDiciplinas().atualizarTabela();
                tela.getModelProfessores().atualizarTabela();
+               
+               tela.getModelAlunos().removeDiciplinaByCode(tela.getDiciplinaCodeInputProfessor().getText());
+               tela.cleanFilds();
             
             
         }catch(Exception ex){

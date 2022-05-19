@@ -36,5 +36,18 @@ public class Aluno extends Usuario{
         listaDiciplinas.add(codigo);
         
     }
+    public List getListaDiciplinas(){
+        return this.listaDiciplinas;
+    }
+    
+    public void removeDiciplinaByCode(String code){
+        
+     
+        while (listaDiciplinas.contains(code)) {
+            listaDiciplinas.remove(code);
+    }
+        
+      
+    }
     
 }

@@ -14,11 +14,14 @@ public class Materia implements Diciplina{
     private final int cargaHoraria;
     private final String codigo;
     private final String name;
+    private final String responsavel;
+    private int qntAlunos = 0;
 
-    public Materia(String name, String codigo, int cargaHoraria) {
+    public Materia(String name, String codigo, int cargaHoraria, String responsavel) {
         this.cargaHoraria = cargaHoraria;
         this.codigo = codigo;
         this.name = name;
+        this.responsavel = responsavel;
     }
     
     @Override
@@ -34,6 +37,24 @@ public class Materia implements Diciplina{
     @Override
     public String getName() {
        return this.name;
+    }
+    @Override
+    public String getResponsavel(){
+        return responsavel;
+    }
+    
+    @Override
+    public int getQntAlunos() {
+        return qntAlunos;
+    }
+    
+    @Override
+    public void menosUmAluno(){
+        this.qntAlunos -= 1;
+    }
+    @Override
+    public void maisUmAluno(){
+        this.qntAlunos += 1;
     }
     
 }

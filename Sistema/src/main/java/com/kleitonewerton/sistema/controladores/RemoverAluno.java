@@ -4,9 +4,11 @@
  */
 package com.kleitonewerton.sistema.controladores;
 
+import com.kleitonewerton.sistema.Aluno;
 import com.kleitonewerton.sistema.views.Tela;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -29,7 +31,14 @@ public class RemoverAluno implements ActionListener{
         
         try{
             
-            this.tela.getModelAlunos().removeAluno(indexLinha);
+            Aluno aluno = this.tela.getModelAlunos().getAluno(indexLinha);
+            List<String> listaDiciplinas  = aluno.getListaDiciplinas();
+            
+            for(String dic: listaDiciplinas)
+                tela.getModelDiciplinas().getDiciplinaByCode(dic).menosUmAluno();
+            
+            this.tela.getModelAlunos().removeObj(indexLinha);
+            tela.cleanFilds();
             
         }catch(Exception ex){
             

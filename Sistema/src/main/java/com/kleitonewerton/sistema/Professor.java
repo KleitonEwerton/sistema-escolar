@@ -35,7 +35,7 @@ public class Professor extends Usuario{
     }  
     public void addNovaDiciplina(String name, String codigo, int cargahoraria){
         
-        this.listaDisciplinas.add(new Materia(name, codigo, cargahoraria));
+        this.listaDisciplinas.add(new Materia(name, codigo, cargahoraria, getNome()));
         
     }
     public void removeDiciplina(String code){
@@ -48,4 +48,6 @@ public class Professor extends Usuario{
     public List getListDiciplinas(){
         return this.listaDisciplinas;
     }
+    
+    
 }

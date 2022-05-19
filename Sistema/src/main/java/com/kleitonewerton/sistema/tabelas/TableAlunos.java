@@ -13,7 +13,7 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author KleitonEwerton
  */
-public class TableAlunos extends AbstractTableModel{
+public class TableAlunos extends AbstractTableModel implements Tables{
     
     private final String[] colunas = new String[]{"NOME","MATRICULA", "AULAS"};
     private final List<Aluno> listAulos = new ArrayList<>();    
@@ -56,28 +56,39 @@ public class TableAlunos extends AbstractTableModel{
         
     }
    
-    public void addNovoAluno(Aluno aluno){
-        
-        this.listAulos.add(aluno);     
-        this.fireTableDataChanged();          
-    }
-    
-    public void removeAluno(int indexLinha){
+    @Override
+    public void removeObj(int indexLinha){
         
         this.listAulos.remove(indexLinha);                      //Remove a linha
         this.fireTableRowsDeleted(indexLinha,indexLinha);//Atualiza a tabela
         
     }
   
-    public Aluno getAluno(int indexProduto){
-        return this.listAulos.get(indexProduto);
-    }
+    @Override
     public void atualizarTabela(){
          this.fireTableDataChanged();      
         
     }
-    
+    @Override
     public List getList(){
         return this.listAulos;
+    }
+    
+    public void addNovoAluno(Aluno aluno){
+        
+        this.listAulos.add(aluno);     
+        this.fireTableDataChanged();          
+    }
+    
+    public Aluno getAluno(int indexProduto){
+        return this.listAulos.get(indexProduto);
+    }
+    public void removeDiciplinaByCode(String code){
+        
+        for(Aluno al:listAulos)
+            al.removeDiciplinaByCode(code);
+        
+           
+        
     }
 }

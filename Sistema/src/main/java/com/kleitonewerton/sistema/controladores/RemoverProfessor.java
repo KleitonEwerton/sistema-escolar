@@ -28,7 +28,8 @@ public class RemoverProfessor implements ActionListener{
         
         try{
             
-            this.tela.getModelProfessores().removeProfessor(indexLinha);
+            this.tela.getModelProfessores().removeObj(indexLinha);
+            tela.cleanFilds();
             
     }catch(Exception ex){
 

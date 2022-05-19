@@ -50,7 +50,8 @@ public class AdicionarNovoProfessor implements ActionListener{
         
         
         
-        this.tela.getModelProfessores().addNovoProfessor(new Professor(nome, matricula));
+        this.tela.getModelProfessores().addObj(new Professor(nome, matricula));
+        tela.cleanFilds();
         
     }
     

@@ -13,5 +13,8 @@ public interface Diciplina {
     int getCargaHoraria();
     String getCodigo();
     String getName();
-    
+    String getResponsavel();
+    int getQntAlunos();
+    void menosUmAluno();
+    void maisUmAluno();
 }

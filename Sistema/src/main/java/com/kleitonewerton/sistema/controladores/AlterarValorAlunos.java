@@ -36,7 +36,7 @@ public class AlterarValorAlunos  implements ListSelectionListener{
                 tela.getNomeInputAluno().setText(aluno.getNome());
                 tela.getMatriculaInputAluno().setText(aluno.getMatricula());
                 tela.getDiciplinasInputAluno().setText(aluno.getDiciplinas());
-            
+                
             
         }catch(Exception ex){
             

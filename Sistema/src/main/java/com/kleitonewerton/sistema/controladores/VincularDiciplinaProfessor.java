@@ -5,6 +5,7 @@
 package com.kleitonewerton.sistema.controladores;
 
 
+import com.kleitonewerton.sistema.Materia;
 import com.kleitonewerton.sistema.Professor;
 import com.kleitonewerton.sistema.views.Tela;
 import java.awt.event.ActionEvent;
@@ -36,20 +37,29 @@ public class VincularDiciplinaProfessor implements ActionListener{
             return;
         }
         
-        if( indexLinha < 0)return;
+        if( indexLinha < 0){
+        
+            JOptionPane.showMessageDialog(null, "PRIMEIRO SELECIONE UM PROFESSOR", "INFO",JOptionPane.INFORMATION_MESSAGE);
+        
+        }
         
         try{
             
                 int ch = Integer. parseInt(tela.getDiciplinaCHInputProfessor().getText());
                 Professor professor = this.tela.getModelProfessores().getProfessor(indexLinha);
                 professor.addNovaDiciplina(tela.getDiciplinaNameInputProfessor().getText(), tela.getDiciplinaCodeInputProfessor().getText(), ch);
+                tela.getModelDiciplinas().addObj(new Materia(tela.getDiciplinaNameInputProfessor().getText(), tela.getDiciplinaCodeInputProfessor().getText(), ch, professor.getNome()));
                 tela.getModelProfessores().atualizarTabela();
+                tela.cleanFilds();
             
             
+        }
+        catch(NumberFormatException exn){
+            JOptionPane.showMessageDialog(null, "CARGA HORARIA INVALIDA", "ERRO",JOptionPane.ERROR_MESSAGE);}
+        
+        catch(Exception ex){
             
-        }catch(Exception ex){
-            
-            System.out.println("ERRO");
+            System.out.println("ERRO" + ex);
             
         }
         
