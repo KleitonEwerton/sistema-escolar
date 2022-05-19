@@ -78,4 +78,7 @@ public class TableProfessores extends AbstractTableModel{
         this.fireTableDataChanged();      
         
     }
+     public List getList(){
+        return this.listProfessores;
+    }
 }

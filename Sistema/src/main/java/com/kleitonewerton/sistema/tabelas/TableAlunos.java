@@ -76,4 +76,8 @@ public class TableAlunos extends AbstractTableModel{
          this.fireTableDataChanged();      
         
     }
+    
+    public List getList(){
+        return this.listAulos;
+    }
 }

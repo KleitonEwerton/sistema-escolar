@@ -45,5 +45,7 @@ public class Professor extends Usuario{
                 listaDisciplinas.remove(i);
         
     }
-    
+    public List getListDiciplinas(){
+        return this.listaDisciplinas;
+    }
 }

@@ -9,7 +9,8 @@ package com.kleitonewerton.sistema.views;
  * @author KleitonEwerton
  */
 
-import com.kleitonewerton.sistema.Aluno;
+import com.kleitonewerton.sistema.Materia;
+import com.kleitonewerton.sistema.Professor;
 import com.kleitonewerton.sistema.controladores.AdicionarNovoAluno;
 import com.kleitonewerton.sistema.controladores.AdicionarNovoProfessor;
 import com.kleitonewerton.sistema.controladores.AlterarValorAlunos;
@@ -22,6 +23,8 @@ import com.kleitonewerton.sistema.tabelas.TableAlunos;
 import com.kleitonewerton.sistema.tabelas.TableProfessores;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -95,10 +98,7 @@ public class Tela extends JFrame{
         this.menuBar.add(this.panelProfessores,"Professores");
         this.menuBar.add(this.panelAlunos,"Alunos");
         this.add(menuBar);
-        
-        Aluno aluno = new Aluno ("eee","ooo");
-        
-        this.modelAlunos.addNovoAluno(aluno);
+      
         
         this.setVisible(true);
     }
@@ -298,6 +298,34 @@ public class Tela extends JFrame{
      public JTextField getMatriculaInputProfessor() {
         return this.matriculaInputProfessor;
     }
-    
-    
+    public List getAllProfessores(){
+        return getModelProfessores().getList();
+    }
+    public List getAllDiciplinas(){
+        
+        List<Materia> listDisc = new ArrayList<>();
+        
+        
+        List<Professor> listProf = getAllProfessores();
+         
+        for(Professor prof: listProf){
+            
+            List<Materia> lis = prof.getListDiciplinas();
+            for(Materia mat: lis){
+                listDisc.add(mat);
+            }
+            
+        }
+        
+        return listDisc;
+    }
+    public boolean materiaValida(String code){
+        List<Materia> list= getAllDiciplinas();
+        
+        for(Materia mat: list){
+            if(mat.getCodigo().equals(code))return true;
+        }
+        return false;
+        
+    }
 }

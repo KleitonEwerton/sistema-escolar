@@ -15,7 +15,7 @@ public class Aluno extends Usuario{
 
    
     
-    private final List<Materia> listaDiciplinas = new ArrayList<>();
+    private final List<String> listaDiciplinas = new ArrayList<>();
 
     
     public Aluno(String nome, String numeroDeRegistro) {
@@ -25,15 +25,15 @@ public class Aluno extends Usuario{
     public String getDiciplinas(){
         
         String diciplinas = "";
-        for(Diciplina dic: this.listaDiciplinas){
-            diciplinas += dic.getCodigo() + ",";
+        for(String dic: this.listaDiciplinas){
+            diciplinas += dic + ",";
         }
         return diciplinas;
     }   
   
-    public void addNovaDiciplina(String name,String codigo, int cargahoraria){
+    public void addNovaDiciplina(String codigo){
         
-        listaDiciplinas.add(new Materia(name,codigo, cargahoraria));
+        listaDiciplinas.add(codigo);
         
     }
     

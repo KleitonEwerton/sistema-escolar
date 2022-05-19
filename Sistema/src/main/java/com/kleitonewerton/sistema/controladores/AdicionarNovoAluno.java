@@ -5,9 +5,12 @@
 package com.kleitonewerton.sistema.controladores;
 
 import com.kleitonewerton.sistema.Aluno;
+import com.kleitonewerton.sistema.Materia;
+import com.kleitonewerton.sistema.Professor;
 import com.kleitonewerton.sistema.views.Tela;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,9 +35,9 @@ public class AdicionarNovoAluno implements ActionListener{
         String diciplina = tela.getDiciplinasInputAluno().getText();
         diciplina = diciplina.replace(" ", "");
         String[] disciplinas = diciplina.split(",");
+       
         
-        double valor;
-        int quantidade;
+        
         
         
         if(nome.equals("" )){
@@ -49,8 +52,15 @@ public class AdicionarNovoAluno implements ActionListener{
         
         
         
-        this.tela.getModelAlunos().addNovoAluno(aluno);
         
+        for(int i  = 0; i < disciplinas.length;i++){
+            if(tela.materiaValida(disciplinas[i]))aluno.addNovaDiciplina(disciplinas[i]);
+            else{ JOptionPane.showMessageDialog(null, "ERRO AO ADICIONAR\nDICIPLINA " + disciplinas[i] + " não consta", "ERRO",JOptionPane.ERROR_MESSAGE);return;}
+        }
+        
+        this.tela.getModelAlunos().addNovoAluno(aluno);
     }
+    
+    
     
 }
